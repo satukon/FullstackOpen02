@@ -8,6 +8,7 @@ export const FindCountries = (props) => {
     );
   };
   
+
   export const Countries = (props) => {
     const { countries, filterInput, onShowButtonClick } = props;
   
@@ -17,15 +18,12 @@ export const FindCountries = (props) => {
   
     if (filterInput.length === 0) {
       return null;
-    } else if (filteredCountries.length > 1 && filteredCountries.length < 10) {
+    }
+    else if (filteredCountries.length > 1 && filteredCountries.length < 10) {
       return (
         <div>
           {filteredCountries.map((country, index) => (
-            <CountryName
-              key={index}
-              country={country}
-              onShowButtonClick={onShowButtonClick}
-            />
+            <CountryName key={index} country={country} onShowButtonClick={onShowButtonClick} />
           ))}
         </div>
       );
@@ -33,9 +31,7 @@ export const FindCountries = (props) => {
       return (
         <div>
           {filteredCountries.map((country, index) => (
-            <div key={index}>
-              <CountryInfo country={country} />
-            </div>
+            <div key={index}> <CountryInfo country={country} /> </div>
           ))}
         </div>
       );
@@ -44,7 +40,7 @@ export const FindCountries = (props) => {
     }
   };
   
-  
+
   export const CountryName = (props) => {
     const { country, onShowButtonClick } = props;
   
@@ -61,6 +57,7 @@ export const FindCountries = (props) => {
     );
   };
   
+  
   export const CountryInfo = (props) => {
     const { country } = props; 
   
@@ -73,8 +70,8 @@ export const FindCountries = (props) => {
         </p>
         <h2>Languages</h2>
         <ul>
-          {Object.entries(country.languages).map(([languageCode, languageName]) => (
-            <li key={languageCode}>{languageName}</li>
+          {Object.entries(country.languages).map(([code, name]) => (
+            <li key={code}>{name}</li>
           ))}
         </ul>
         <img src={country.flags.png} alt={country.flags.alt} width="200" height="125" />
